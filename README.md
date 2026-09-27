@@ -1,4 +1,4 @@
-# Suzuka‘s TX-41enhancement v1.0.0
+# Suzuka‘s TX-41enhancement v1.1.0
 
 A Helldivers 2 TX-41 Sterilizer mod for Bingus Shared Loader v15+ (API 1).
 
@@ -9,12 +9,16 @@ A Helldivers 2 TX-41 Sterilizer mod for Bingus Shared Loader v15+ (API 1).
 - Gas damage immunity while carrying the TX-41.
 - Gas and confusion application values: 100 each on hit.
 
+## What changed in v1.1.0
+
+When a verified local player equipment record remains stable and does not contain a confirmed TX-41 entity, Gas Guard skips repeated full snapshots. A changed or unreadable record, or a changed mission context, resumes identification. Active effects still receive validation and are restored on unequip. Identity checks, unique matching, readback verification, and fail-closed writes remain in place.
+
 ## Download
 
 Download the ZIP from the [latest release](https://github.com/Suzuka2788/helldivers-2-tx41-enhancement/releases/latest) and install it through your mod loader.
 
 ## Verification
 
-The v1.0.0 package passed offline syntax, identity, simulated write and restore, and ZIP integrity checks. The latest high-address lookup change for status application has not yet been confirmed in game. Check `%LOCALAPPDATA%\CowboyBingus\Helldivers2\Logs\TongzTX41Status100.log`: `PATCH=APPLIED_TX41_GAS_100_CONFUSION_100` with `writes=2` confirms that part was applied. If verification fails, the mod refuses that write.
+The v1.1.0 package passed offline syntax, identity, simulated write and restore, and ZIP integrity checks. It has not yet been verified in game. For Gas Guard, inspect `TongzSterilizerGasGuard.log`: `LOCAL_ABSENT_SKIPS`, `FULL_SCANS`, `PERF_WATCH`, `PERF_SNAPSHOT`, `STERILIZER`, and `WRITES`. For status application, inspect `TongzTX41Status100.log`: `PATCH`, `reads`, `bytes`, and `writes`. Compare any stutter to frame time; fewer scans alone do not prove a stutter is fixed.
 
-SHA-256 (`Suzukas-TX-41enhancement-v1.0.0.zip`): `66080AC41BCC7086A4F852A1B199DFC807FD77B05096ED0868FD75BC4A3CAE5E`.
+SHA-256 (`Suzukas-TX-41enhancement-v1.1.0.zip`): `9D0D2CBEDAEEC16D1F3A624573FEB70641E9820923F25C9EDBC2605DC8FA5CA2`.
